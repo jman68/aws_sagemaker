@@ -1,3 +1,3 @@
 FROM rocker/tidyverse:latest
 
-ENTRYPOINT ["Rscript"]
+ENTRYPOINT ["Rscript", "run_pred_pipeline.R"]
