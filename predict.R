@@ -2,18 +2,14 @@ library(ranger)
 library(jsonlite)
 
 # download model file from S3 into /tmp folder
-system("aws s3 cp s3://r-testing/model/model.Rds /tmp/model.rds")
+system("aws s3 cp s3://r-testing/model/model.Rds /tmp/model.Rds")
 
 handler <- function(body, ...) {
-  print(body)
-  print(typeof(body))
-  print(str(body))
-  # data <- fromJSON(txt = body)
   # load model
-  model <- readRDS("/tmp/model.rds")
+  print(paste("The model objects exists:", file.exists("/tmp/model.Rds")))
+  model <- readRDS("/tmp/model.Rds")
   # predict with loaded model
-  data = body
-  predictions <- predict(model, data = data)
+  predictions <- predict(model, data = body)
   # return response with predictions payload
   return(
     list(
