@@ -2,7 +2,7 @@ library(ranger)
 library(jsonlite)
 
 # download model file from S3 into /tmp folder
-system("aws s3 cp ${S3_MODEL_URI} /model/model.rds")
+system("aws s3 cp s3://r-testing/model/model.Rds /tmp/model.rds")
 
 handler <- function(body, ...) {
   data <- fromJSON(txt = body)
