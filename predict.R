@@ -17,7 +17,7 @@ handler <- function(body, ...) {
     list(
       statusCode = 200,
       headers = list("Content-Type" = "application/json"),
-      body = toJSON(list(predictions = predictions))
+      body = toJSON(list(predictions = predictions$predictions))
     )
   )
 }
