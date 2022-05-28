@@ -7,10 +7,12 @@ system("aws s3 cp s3://r-testing/model/model.Rds /tmp/model.rds")
 handler <- function(body, ...) {
   print(body)
   print(typeof(body))
-  data <- fromJSON(txt = body)
+  print(str(body))
+  # data <- fromJSON(txt = body)
   # load model
   model <- readRDS("/tmp/model.rds")
   # predict with loaded model
+  data = body
   predictions <- predict(model, data = data)
   # return response with predictions payload
   return(
