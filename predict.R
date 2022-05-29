@@ -11,6 +11,7 @@ handler <- function(body, ...) {
   if(typeof(body) == "character") {
     body = fromJSON(body)    
   }
+  # check body structure and pass as data.frame
   print(str(body))
   body = as.data.frame(body)
   # predict with loaded model
@@ -20,7 +21,7 @@ handler <- function(body, ...) {
     list(
       statusCode = 200,
       headers = list("Content-Type" = "application/json"),
-      body = toJSON(list(predictions = predictions$predictions))
+      body = toJSON(predictions$predictions)
     )
   )
 }
