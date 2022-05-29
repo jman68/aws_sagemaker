@@ -8,6 +8,9 @@ handler <- function(body, ...) {
   # load model
   model <- readRDS("/tmp/model.Rds")
   # parse JSON inputs
+  if(type(body) == "character") {
+    body = fromJSON(body)    
+  }
   print(str(body))
   body = as.data.frame(body)
   # predict with loaded model
