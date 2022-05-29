@@ -8,7 +8,7 @@ handler <- function(body, ...) {
   # load model
   model <- readRDS("/tmp/model.Rds")
   # parse JSON inputs
-  if(type(body) == "character") {
+  if(typeof(body) == "character") {
     body = fromJSON(body)    
   }
   print(str(body))
